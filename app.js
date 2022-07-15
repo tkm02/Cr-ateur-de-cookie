@@ -49,9 +49,10 @@ function creerCookie(nom,valeur,date){
 
 
     info.innerText="";
-    resultat.childNodes.forEach(child=>{
-        child.remove();
-    })
+    resultat.innerHTML ="";
+
+    // display.remove();
+
     let cookies = document.cookie.split(';');
     cookies.forEach((cookie)=>{
 
@@ -59,11 +60,12 @@ function creerCookie(nom,valeur,date){
         let formatCookie = cookie.split('=');
         if( formatCookie[0] === encodeURIComponent(nom)){
             dejaFait = true;
+            
         }
 
     });
 
-    if(dejaFait){
+    if(dejaFait && nom !== "" && nom !==0){
 
         info.innerText = "un Cookie possède deja ce nom!"
         dejaFait=false;
@@ -72,7 +74,7 @@ function creerCookie(nom,valeur,date){
     };
 
 
-    if(nom.length === 0){
+    if(nom === ""){
 
         info.innerText = 'impossible de definir un cookie sans nom';
         info.style.color='red';
